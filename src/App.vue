@@ -1,13 +1,17 @@
 <template>
     <div class="container">
-        <h1>Hello World!</h1>
+        <HomeComponent></HomeComponent>
     </div>
 </template>
 
 <script lang="ts">
+import HomeComponent from "./components/HomeComponent.vue";
+
 export default {
     name: "App",
-    components: {},
+    components: {
+        HomeComponent,
+    },
 };
 </script>
 
@@ -22,13 +26,9 @@ body {
     font-family: "Poppins", sans-serif;
 }
 .container {
-    max-width: 500px;
-    margin: 30px auto;
-    overflow: auto;
-    min-height: 300px;
-    border: 1px solid steelblue;
-    padding: 30px;
-    border-radius: 5px;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
 }
 .btn {
     display: inline-block;
