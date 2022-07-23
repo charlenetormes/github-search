@@ -1,15 +1,19 @@
 <template>
-  <router-view>
-  </router-view>
+  <div class="">
+    <NavigationBar/>
+    <router-view>
+    </router-view>
+  </div>
+  
 </template>
 
 <script lang="ts">
-  import HelloWorld from './components/HelloWorld.vue'
+  import NavigationBar from './components/NavigationBar.vue'
 
   export default {
     name: "App",
     components: {
-      HelloWorld
+      NavigationBar
     }
   }
 </script>
