@@ -30,7 +30,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
             >
-                Users
+                {{store.state.type}}
                 <svg
                 aria-hidden="true"
                 focusable="false"
@@ -85,7 +85,7 @@
                     hover:bg-gray-100
                     "
                     href="#"
-                    >Repositories</a
+                    >{{ store.state.type === 'Repositories'? 'Users' : 'Repositories'}}</a
                 >
                 </li>
                 <li>
@@ -104,7 +104,7 @@
                     hover:bg-gray-100
                     "
                     href="#"
-                    >Topics</a
+                    >{{ store.state.type === 'Topics'? 'Users' : 'Topics'}}</a
                 >
                 </li>
             </ul>
@@ -114,10 +114,15 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
 export default {
     name: "Dropdown",
     setup() {
-        
+        const store = useStore()
+
+        return {
+            store
+        }
     },
 }
 </script>
