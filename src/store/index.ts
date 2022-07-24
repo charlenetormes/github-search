@@ -2,12 +2,16 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 
 const token = import.meta.env.VITE_APP_TOKEN;
+const header = {
+    'Authorization': `token ${token}`
+}
 
 export default createStore({
     state: {
         search: '',
         type: 'Users',
-        results: []
+        results: [],
+        isLoading: false
     },
     mutations: {
         setSearch(state, value){
@@ -18,6 +22,9 @@ export default createStore({
         },
         setResults(state, value){
             state.results = value;
+        },
+        setLoading(state, value){
+            state.isLoading = value;
         }
     },
     actions: {
@@ -27,9 +34,24 @@ export default createStore({
         setType({commit}, payload){
             commit('setType', payload);
         },
-        setResults({commit, state}, payload){
+        setLoading({commit}, payload){
+            commit('setLoading', payload);
+        },
+        async setResults({commit, state}, payload){
+            let url = `https://api.github.com/`;
+
             if(state.type === 'Users'){
-                axios.get('')
+                url += `users/${payload.user}`;
+                try{
+                    const {data} = await axios.get(url, {
+                        headers: header
+                    });
+    
+                    commit('setResults', [data]);
+                }
+                catch(e){
+                    commit('setResults', []);
+                }
             }
             else if (state.type === 'Repositories'){
             

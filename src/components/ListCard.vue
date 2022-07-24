@@ -1,10 +1,16 @@
 <template>
-    <div class="flex justify-center">
-        <div class="block p-6 rounded-lg shadow-lg bg-white max-w-lg">
-            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">{{title}}</h5>
+    <div class="flex justify-center items-center">
+        <div class="block p-6 rounded-lg shadow-lg bg-white w-3/12">
+            <img :src="user.avatar_url" width="150" height="150" class="mx-auto my-5 rounded-full">
+            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">{{user.login}}</h5>
             <p class="text-gray-700 text-base mb-4">
-            Some quick example text to build on the card title and make up the bulk of the card's
-            content.
+                {{user.location}}
+            </p>
+             <p class="text-gray-700 text-base mb-4">
+                Public Repos: {{user.public_repos}}
+            </p>
+            <p class="text-gray-700 text-base mb-4">
+                {{user.bio}}
             </p>
         </div>
     </div>
@@ -13,7 +19,7 @@
 <script>
 export default {
     name: "ListCard",
-    props: ['title'],
+    props: ['user'],
     setup() {
         
     },
