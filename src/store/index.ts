@@ -41,13 +41,13 @@ export default createStore({
             let url = `https://api.github.com/`;
 
             if(state.type === 'Users'){
-                url += `users/${payload.user}`;
+                url += `search/users?q=${payload.user}+in%3Alogin`;
                 try{
                     const {data} = await axios.get(url, {
                         headers: header
                     });
     
-                    commit('setResults', [data]);
+                    commit('setResults', data.items);
                 }
                 catch(e){
                     commit('setResults', []);

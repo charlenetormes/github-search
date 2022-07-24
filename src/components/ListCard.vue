@@ -7,7 +7,7 @@
                 {{user.location}}
             </p>
              <p class="text-gray-700 text-base mb-4">
-                Public Repos: {{user.public_repos}}
+                <a :href="user.url">{{user.html_url}}</a>
             </p>
             <p class="text-gray-700 text-base mb-4">
                 {{user.bio}}

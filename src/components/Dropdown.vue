@@ -84,7 +84,7 @@
                     text-gray-700
                     hover:bg-gray-100
                     "
-                    href="#"
+                    @click="setType(store.state.type === 'Repositories'? 'Users' : 'Repositories')"
                     >{{ store.state.type === 'Repositories'? 'Users' : 'Repositories'}}</a
                 >
                 </li>
@@ -103,7 +103,7 @@
                     text-gray-700
                     hover:bg-gray-100
                     "
-                    href="#"
+                    @click="setType(store.state.type === 'Topics'? 'Users' : 'Topics')"
                     >{{ store.state.type === 'Topics'? 'Users' : 'Topics'}}</a
                 >
                 </li>
@@ -124,6 +124,11 @@ export default {
             store
         }
     },
+    methods: {
+        setType(value){
+            this.store.dispatch('setType', value);
+        }
+    }
 }
 </script>
 
