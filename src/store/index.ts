@@ -54,10 +54,17 @@ export default createStore({
                 }
             }
             else if (state.type === 'Repositories'){
-            
-            }
-            else if (state.type === 'Topics'){
-                
+                url += `search/repositories?q=${payload.repo}+in%3Arepos`;
+                try{
+                    const {data} = await axios.get(url, {
+                        headers: header
+                    });
+
+                    commit('setResults', data.items);
+                }
+                catch(e){
+                    commit('setResults', []);
+                }
             }
         }
     },

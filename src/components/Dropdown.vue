@@ -30,7 +30,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
             >
-                {{store.state.type}}
+                {{type}}
                 <svg
                 aria-hidden="true"
                 focusable="false"
@@ -84,27 +84,8 @@
                     text-gray-700
                     hover:bg-gray-100
                     "
-                    @click="setType(store.state.type === 'Repositories'? 'Users' : 'Repositories')"
-                    >{{ store.state.type === 'Repositories'? 'Users' : 'Repositories'}}</a
-                >
-                </li>
-                <li>
-                <a
-                    class="
-                    dropdown-item
-                    text-sm
-                    py-2
-                    px-4
-                    font-normal
-                    block
-                    w-full
-                    whitespace-nowrap
-                    bg-transparent
-                    text-gray-700
-                    hover:bg-gray-100
-                    "
-                    @click="setType(store.state.type === 'Topics'? 'Users' : 'Topics')"
-                    >{{ store.state.type === 'Topics'? 'Users' : 'Topics'}}</a
+                    @click="setType(type === 'Users'? 'Repositories' : 'Users')"
+                    >{{type === 'Repositories'? 'Users' : 'Repositories'}}</a
                 >
                 </li>
             </ul>
@@ -114,6 +95,7 @@
 </template>
 
 <script>
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 export default {
     name: "Dropdown",
@@ -121,12 +103,15 @@ export default {
         const store = useStore()
 
         return {
+            type: computed(() => store.state.type),
             store
         }
     },
     methods: {
-        setType(value){
-            this.store.dispatch('setType', value);
+        async setType(value){
+            await this.store.dispatch('setSearch', '');
+            await this.store.commit('setResults', []);
+            await this.store.dispatch('setType', value);
         }
     }
 }

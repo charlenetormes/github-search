@@ -7,7 +7,7 @@
                 {{user.location}}
             </p>
              <p class="text-gray-700 text-base mb-4">
-                <a :href="user.url">{{user.html_url}}</a>
+                <a :href="user.html_url">{{user.html_url}}</a>
             </p>
             <p class="text-gray-700 text-base mb-4">
                 {{user.bio}}
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: "ListCard",
+    name: "UserCard",
     props: ['user'],
     setup() {
         

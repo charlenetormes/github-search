@@ -30,6 +30,8 @@ export default {
             this.store.dispatch('setLoading', true);
             if(this.store.state.type === 'Users')
                 await this.store.dispatch('setResults', {user: this.store.state.search})
+            else
+                await this.store.dispatch('setResults', {repo: this.store.state.search})
             
             this.store.dispatch('setLoading', false);
         }
