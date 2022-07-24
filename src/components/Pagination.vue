@@ -6,7 +6,7 @@
             class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded text-white hover:text-gray-800 focus:shadow-none"
             href="#"
             @click="prevPage">Previous</a></li>
-        <li class="page-item"><a
+        <li class="page-item" v-if="store.state.results.length === 10"><a
             class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded text-white hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
             href="#"
             @click="nextPage">Next</a></li>
