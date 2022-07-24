@@ -48,12 +48,11 @@ export default createStore({
             let url = `https://api.github.com/`;
 
             if(state.type === 'Users'){
-                url += `search/users?q=${payload.user}+in%3Alogin&page=${state.page}`;
+                url += `search/users?q=${payload.user}+in%3Alogin&page=${state.page}&per_page=10`;
                 try{
                     const {data} = await axios.get(url, {
                         headers: header
                     });
-    
                     commit('setResults', data.items);
                 }
                 catch(e){
@@ -61,7 +60,7 @@ export default createStore({
                 }
             }
             else if (state.type === 'Repositories'){
-                url += `search/repositories?q=${payload.repo}+in%3Arepos&page=${state.page}`;
+                url += `search/repositories?q=${payload.repo}+in%3Arepos&page=${state.page}&per_page=10`;
                 try{
                     const {data} = await axios.get(url, {
                         headers: header
