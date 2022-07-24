@@ -7,12 +7,8 @@
         <div v-else-if="store.state.results.length > 0">
             <ul>
                 <li class="my-4" v-for="(item, index) in store.state.results" :key="index">
-                    <UserCard v-if="store.state.type === 'Users'" :user="item"/>   
-                    <div v-if="store.state.type === 'Repositories'">
-                        <router-link :to="`/repository?id=${item.id}`">
-                            <RepoCard :repo="item"/>
-                        </router-link>
-                    </div>
+                    <UserCard v-if="store.state.type === 'Users'" :user="item"/>
+                    <RepoCard v-else :repo="item"/>
                 </li>
             </ul>
         </div>
@@ -37,14 +33,11 @@ export default {
         Spinner,
         RepoCard
     },
-    data(){
-        return {
-            store: this.store
-        }
-    },
     setup() {
         const config = import.meta.env;
         const store = useStore();
+
+        store.dispatch('setResults', {user:''});
 
         return {
             config,

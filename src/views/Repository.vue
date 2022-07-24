@@ -4,6 +4,7 @@
 
 <script>
 import {useRoute} from 'vue-router'
+import { useStore } from 'vuex'
 import ContributorCard from '../components/ContributorCard.vue'
 export default {
     name: "Repository",
@@ -12,9 +13,13 @@ export default {
     },
     setup() {
         const route = useRoute()
-        console.log(route.query.id);
+        const store = useStore();
+    
+        store.dispatch('setSearch', '');
+        
         return{
-            route
+            route,
+            store
         }
     },
 }

@@ -8,6 +8,12 @@
             <p class="text-gray-700 text-base mb-4">
                 <a :href="repo.html_url">{{repo.html_url}}</a>
             </p>
+            <router-link :to="`/repository?id=${repo.id}`">
+            <p class="text-gray-700 text-base mb-4">
+                View
+            </p>
+            </router-link>
+            
         </div>
     </div>
 </template>
