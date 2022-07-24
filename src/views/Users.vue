@@ -11,6 +11,7 @@
                     <RepoCard v-else :repo="item"/>
                 </li>
             </ul>
+            <Pagination/>
         </div>
         <div v-else>
             <h1>No results found</h1>
@@ -23,6 +24,7 @@ import Search from '../components/Search.vue'
 import UserCard from '../components/UserCard.vue'
 import Spinner from '../components/Spinner.vue'
 import RepoCard from '../components/RepoCard.vue'
+import Pagination from '../components/Pagination.vue'
 import { useStore } from 'vuex';
 
 export default {
@@ -31,7 +33,8 @@ export default {
         Search,
         UserCard,
         Spinner,
-        RepoCard
+        RepoCard,
+        Pagination
     },
     setup() {
         const config = import.meta.env;

@@ -11,7 +11,8 @@ export default createStore({
         search: '',
         type: 'Users',
         results: [],
-        isLoading: false
+        isLoading: false,
+        page: 1
     },
     mutations: {
         setSearch(state, value){
@@ -25,6 +26,9 @@ export default createStore({
         },
         setLoading(state, value){
             state.isLoading = value;
+        },
+        setPage(state, value){
+            state.page = value;
         }
     },
     actions: {
@@ -37,11 +41,15 @@ export default createStore({
         setLoading({commit}, payload){
             commit('setLoading', payload);
         },
+        setPage({commit}, payload){
+            commit('setPage', payload);
+        },
         async setResults({commit, state}, payload){
             let url = `https://api.github.com/`;
 
             if(state.type === 'Users'){
-                url += `search/users?q=${payload.user}+in%3Alogin`;
+                url += `search/users?q=${payload.user}+in%3Alogin&page=${state.page}`;
+                alert(url);
                 try{
                     const {data} = await axios.get(url, {
                         headers: header
@@ -54,7 +62,8 @@ export default createStore({
                 }
             }
             else if (state.type === 'Repositories'){
-                url += `search/repositories?q=${payload.repo}+in%3Arepos`;
+                url += `search/repositories?q=${payload.repo}+in%3Arepos&page=${state.page}`;
+                alert(url);
                 try{
                     const {data} = await axios.get(url, {
                         headers: header

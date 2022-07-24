@@ -68,7 +68,6 @@ export default {
                 return data;
             })
             .catch((e) => {
-                
                 return null;
             })
         }

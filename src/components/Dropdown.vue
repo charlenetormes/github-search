@@ -110,7 +110,8 @@ export default {
     methods: {
         async setType(value){
             await this.store.dispatch('setSearch', '');
-            await this.store.commit('setResults', []);
+            await this.store.dispatch('setPage', 1);
+            this.store.commit('setResults', []);
             await this.store.dispatch('setType', value);
         }
     }

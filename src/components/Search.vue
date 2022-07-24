@@ -28,6 +28,7 @@ export default {
     methods: {
         async setSearch(){
             this.store.dispatch('setLoading', true);
+            await this.store.dispatch('setPage', 1);
             if(this.store.state.type === 'Users')
                 await this.store.dispatch('setResults', {user: this.store.state.search})
             else
