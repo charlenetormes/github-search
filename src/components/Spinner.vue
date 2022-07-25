@@ -9,12 +9,8 @@
 <script>
 export default {
     name: 'Spinner',
-    setup() {
-        
-    },
-}
+    setup() {},
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

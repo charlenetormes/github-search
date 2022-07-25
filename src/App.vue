@@ -1,23 +1,19 @@
 <template>
-  <div class="">
-    <NavigationBar/>
-    <router-view>
-    </router-view>
-  </div>
-  
+    <div class="">
+        <NavigationBar />
+        <router-view> </router-view>
+    </div>
 </template>
 
 <script lang="ts">
-  import NavigationBar from './components/NavigationBar.vue'
+import NavigationBar from './components/NavigationBar.vue';
 
-  export default {
-    name: "App",
+export default {
+    name: 'App',
     components: {
-      NavigationBar
-    }
-  }
+        NavigationBar,
+    },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
